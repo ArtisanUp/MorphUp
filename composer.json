@@ -1,0 +1,32 @@
+{
+    "name": "artisan-up/morph-up",
+    "description": "Laravel morph map management for large projects.",
+    "keywords": ["laravel", "framework", "morph", "morphmap", "morph map", "morph string", "artisan", "artisan up", "morph up", "morphup"],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0.2",
+        "nette/robot-loader": "^3.4.1",
+        "illuminate/support": "8.*|9.*",
+        "illuminate/console": "^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "ArtisanUp\\MorphUp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ArtisanUp\\Tests\\MorphUp\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5.8 || ^9.3.7",
+        "graham-campbell/testbench": "^5.7"
+    }
+}
