@@ -13,6 +13,7 @@ class CreateMorphMapTest extends AbstractPackageTestCase
     public function testItInstantiates()
     {
         $robotLoaderMock = $this->mock(RobotLoader::class);
+
         $createMorphMapCommand = new CreateMorphMap($robotLoaderMock);
 
         $this->assertInstanceOf(CreateMorphMap::class, $createMorphMapCommand);

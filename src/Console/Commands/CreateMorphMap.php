@@ -6,9 +6,6 @@ use ArtisanUp\MorphUp\Filter\ClassFilter;
 use ArtisanUp\MorphUp\Find\ClassFinder;
 use ArtisanUp\MorphUp\Find\FoundClass;
 use Illuminate\Console\Command;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-use ReflectionClass;
 
 class CreateMorphMap extends Command
 {
@@ -67,7 +64,7 @@ class CreateMorphMap extends Command
 
     private function writeCacheFile(array $morphMap): void
     {
-        $directory = storage_path('app/morph-map');
+        $directory = storage_path('app/artisan-up/morph-up'); //TOOD: Make cofigurable
         $fileName = 'morph-cache.php';
         $filePath = $directory . DIRECTORY_SEPARATOR . $fileName;
 

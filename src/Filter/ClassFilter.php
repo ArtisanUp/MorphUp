@@ -26,13 +26,13 @@ class ClassFilter
     {
         $filePath = $foundClass->getFilePath();
 
-        if (Str::contains($filePath, config('morphmap.exclude_paths_containing'))) {
+        if (Str::contains($filePath, $excludePathsContaining)) {
             return false;
         }
 
         $className = $foundClass->getClassName();
 
-        if (Str::contains($className, config('morphmap.exclude_namespaces_containing'))) {
+        if (Str::contains($className, $excludeNamespacesContaining)) {
             return false;
         }
 

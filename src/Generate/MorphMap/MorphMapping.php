@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtisanUp\MorphUp\MorphMapping;
+namespace ArtisanUp\MorphUp\Generate\MorphMap;
 
 use ArtisanUp\MorphUp\Find\FoundClass;
 
