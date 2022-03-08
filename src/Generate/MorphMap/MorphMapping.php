@@ -3,8 +3,9 @@
 namespace ArtisanUp\MorphUp\Generate\MorphMap;
 
 use ArtisanUp\MorphUp\Find\FoundClass;
+use Illuminate\Contracts\Support\Arrayable;
 
-class MorphMapping
+class MorphMapping implements Arrayable
 {
     public function __construct(
         private FoundClass $foundClass,
@@ -36,5 +37,13 @@ class MorphMapping
     public function getMorphedClassName(): string
     {
         return $this->foundClass->getClassName();
+    }
+
+    public function toArray()
+    {
+        return [
+            'morph_string' => $this->getMorphString(),
+            'morphed_class' => $this->getMorphedClassName()
+        ];
     }
 }

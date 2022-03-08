@@ -3,8 +3,9 @@
 namespace ArtisanUp\MorphUp\Generate\MorphMap;
 
 use ArtisanUp\MorphUp\Generate\MorphMapping\MorphMappingCollection;
+use Illuminate\Contracts\Support\Arrayable;
 
-class MorphMap
+class MorphMap implements Arrayable
 {
     private MorphMappingCollection $morphMappings;
 
@@ -13,9 +14,12 @@ class MorphMap
         $this->morphMappings = new MorphMappingCollection([]);
     }
 
-    public function toArray(): array
+    public function toArray()
     {
-        return [];
+        return $this->morphMappings->pluck(
+            'morphed_class',
+            'morph_string'
+        );
     }
 
     public function addMorphMapping(MorphMapping $morphMapping): void
@@ -23,7 +27,18 @@ class MorphMap
         $key = $morphMapping->getMorphString();
 
         if ($this->morphMappings->has($key)) {
+            $this->throwClashException($key, $morphMapping);
         }
+
         $this->morphMappings->put($morphMapping->getMorphString(), $morphMapping);
+    }
+
+    private function throwClashException(string $key, MorphMapping $morphMapping): void
+    {
+        $exception = new MorphStringClashException();
+        $exception->setClashingMapping($morphMapping);
+        $exception->setClashedWithMapping($this->morphMappings->get($key));
+
+        throw $exception;
     }
 }
