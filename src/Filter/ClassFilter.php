@@ -17,8 +17,7 @@ class ClassFilter
         Collection $foundClasses,
         array $excludePathsContaining,
         array $excludeNamespacesContaining
-    ): FoundClassCollection
-    {
+    ): FoundClassCollection {
         return $foundClasses->filter(
             fn (FoundClass $foundClass) => $this->shouldMorphStringClass($foundClass, $excludePathsContaining, $excludeNamespacesContaining)
         );
