@@ -66,7 +66,7 @@ class CreateMorphMap extends Command
 
     private function writeCacheFile(array $morphMap): void
     {
-        $directory = storage_path('app/artisan-up/morph-up'); //TOOD: Make cofigurable
+        $directory = storage_path('app/artisan-up/morph-up'); //TODO: Make configurable
         $fileName = 'morph-cache.php';
         $filePath = $directory.DIRECTORY_SEPARATOR.$fileName;
 

@@ -7,23 +7,27 @@ use ArtisanUp\MorphUp\Generate\MorphMap\MorphMapping;
 
 class MorphMappingFactory
 {
-    private string $defaultMode = '';
-
-    private string $safeMode = '';
+    private MorphMappingStrategy $defaultMode = MorphMappingStrategy::CLASS_NAME_SNAKE;
+    private MorphMappingStrategy $safeMode = MorphMappingStrategy::FULL_NAMESPACE_SNAKE;
 
     public function make(FoundClass $foundClass, bool $safeMode = false): MorphMapping
     {
+        $morphName = $this->makeMorphString($foundClass, $safeMode);
+    
+        return new MorphMapping($foundClass, $morphName);
+    }
+
+    private function makeMorphString(FoundClass $foundClass, bool $safeMode = false): string
+    {
+        //TODO: Honour configurability of morph string type
         $reflection = $foundClass->getReflectionClass();
 
-        $morphName = $reflection->hasProperty('morphString') ? $foundClass->getClassName()::$morphString : $this->namespaceToSnakeCase($reflection->getShortName());
+        if($safeMode){
+            return $this->namespaceToSnakeCase($reflection->getShortName());
+        }
 
-        $morphString = null;
-
-        $qualifiedMorphName = $this->namespaceToSnakeCase($reflection->getName());
-        $morphMap[$qualifiedMorphName] = $foundClass->getClassName();
-
-        //TODO: real implementation
-        return new MorphMapping($foundClass, '');
+        //TODO: Is it always safe to return morphString? Need an indicator of if we're dealing with a clash or not.
+        return $reflection->hasProperty('morphString') ? $foundClass->getClassName()::$morphString : $this->namespaceToSnakeCase($reflection->getShortName());
     }
 
     private function namespaceToSnakeCase(string $namespace): string
@@ -33,13 +37,4 @@ class MorphMappingFactory
         return str_replace('\\', '', $snakeCase);
     }
 
-    private function generateClashSafeString(FoundClass $foundClass): string
-    {
-        return '';
-    }
-
-    private function generateDefaultMorphString(): string
-    {
-        return '';
-    }
 }
