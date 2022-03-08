@@ -3,8 +3,10 @@
 namespace ArtisanUp\MorphUp\Filter;
 
 use ArtisanUp\MorphUp\Find\FoundClass;
+use ArtisanUp\MorphUp\Find\FoundClassCollection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
 
 
 class ClassFilter
@@ -15,7 +17,7 @@ class ClassFilter
     public function filterFoundClasses(
         Collection $foundClasses, 
         array $excludePathsContaining, 
-        array $excludeNamespacesContaining): Collection
+        array $excludeNamespacesContaining): FoundClassCollection
     {
         return $foundClasses->filter(
             fn(FoundClass $foundClass) => $this->shouldMorphStringClass($foundClass, $excludePathsContaining, $excludeNamespacesContaining)

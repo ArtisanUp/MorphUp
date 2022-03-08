@@ -14,14 +14,14 @@ class ClassFinder
     /**
      * @return Collection|FoundClass[]
      */
-    public function findClasses(array $includedPaths, array $excludedPaths): Collection
+    public function findClasses(array $includedPaths, array $excludedPaths): FoundClassCollection
     {
         $classesFound =  $this->getClasses(
              includedPaths: $includedPaths,
              excludedPaths: $excludedPaths
             );
 
-        $qualifiedClassNames = new Collection($classesFound);
+        $qualifiedClassNames = new FoundClassCollection($classesFound);
 
         return $qualifiedClassNames->transform(
             fn(string $filePath, string $className) => new FoundClass(qualifiedClassName: $className, filePath: $filePath)

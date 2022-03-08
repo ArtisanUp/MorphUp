@@ -1,6 +1,6 @@
 {
     "name": "artisan-up/morph-up",
-    "description": "Laravel morph map management for large projects.",
+    "description": "Laravel automatic morph map management for large projects.",
     "keywords": ["laravel", "framework", "morph", "morphmap", "morph map", "morph string", "artisan", "artisan up", "morph up", "morphup"],
     "type": "library",
     "license": "MIT",

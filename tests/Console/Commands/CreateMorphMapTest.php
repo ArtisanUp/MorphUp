@@ -3,18 +3,19 @@
 namespace ArtisanUp\Tests\MorphUp\Console\Commands;
 
 use ArtisanUp\MorphUp\Console\Commands\CreateMorphMap;
-use Nette\Loaders\RobotLoader;
+use ArtisanUp\MorphUp\Filter\ClassFilter;
+use ArtisanUp\MorphUp\Find\ClassFinder;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
-use \Mockery;
 
 
 class CreateMorphMapTest extends AbstractPackageTestCase 
 {
     public function testItInstantiates()
     {
-        $robotLoaderMock = $this->mock(RobotLoader::class);
+        $classFinder = $this->mock(ClassFinder::class);
+        $classFilter = $this->mock(ClassFilter::class);
 
-        $createMorphMapCommand = new CreateMorphMap($robotLoaderMock);
+        $createMorphMapCommand = new CreateMorphMap($classFinder, $classFilter);
 
         $this->assertInstanceOf(CreateMorphMap::class, $createMorphMapCommand);
     }
