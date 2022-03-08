@@ -2,9 +2,7 @@
 
 namespace ArtisanUp\MorphUp\Generate\MorphMap;
 
-use ArtisanUp\MorphUp\Generate\MorphMap\MorphMapping;
 use ArtisanUp\MorphUp\Generate\MorphMapping\MorphMappingCollection;
-
 
 class MorphMap
 {
@@ -13,8 +11,8 @@ class MorphMap
     public function __construct()
     {
         $this->morphMappings = new MorphMappingCollection([]);
-        
     }
+
     public function toArray(): array
     {
         return [];

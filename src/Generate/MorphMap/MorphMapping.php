@@ -4,14 +4,13 @@ namespace ArtisanUp\MorphUp\Generate\MorphMap;
 
 use ArtisanUp\MorphUp\Find\FoundClass;
 
-class MorphMapping 
+class MorphMapping
 {
     public function __construct(
         private FoundClass $foundClass,
-        private string $morphString, 
+        private string $morphString,
         private array $exceptions = []
-        )
-    {     
+    ) {
     }
 
     public function addException(\Exception $exception)

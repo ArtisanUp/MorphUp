@@ -2,8 +2,8 @@
 
 namespace ArtisanUp\MorphUp\Find;
 
-use Nette\Loaders\RobotLoader;
 use Illuminate\Support\Collection;
+use Nette\Loaders\RobotLoader;
 
 class ClassFinder
 {
@@ -16,15 +16,15 @@ class ClassFinder
      */
     public function findClasses(array $includedPaths, array $excludedPaths): FoundClassCollection
     {
-        $classesFound =  $this->getClasses(
-             includedPaths: $includedPaths,
-             excludedPaths: $excludedPaths
-            );
+        $classesFound = $this->getClasses(
+            includedPaths: $includedPaths,
+            excludedPaths: $excludedPaths
+        );
 
         $qualifiedClassNames = new FoundClassCollection($classesFound);
 
         return $qualifiedClassNames->transform(
-            fn(string $filePath, string $className) => new FoundClass(qualifiedClassName: $className, filePath: $filePath)
+            fn (string $filePath, string $className) => new FoundClass(qualifiedClassName: $className, filePath: $filePath)
         );
     }
 

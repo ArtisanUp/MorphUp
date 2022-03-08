@@ -42,6 +42,7 @@ class CreateMorphMap extends Command
 
             if (!isset($morphMap[$morphName])) {
                 $morphMap[$morphName] = $foundClass->getClassName();
+
                 return;
             }
 
@@ -59,6 +60,7 @@ class CreateMorphMap extends Command
     private function namespaceToSnakeCase(string $namespace): string
     {
         $snakeCase = strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $namespace));
+
         return str_replace('\\', '', $snakeCase);
     }
 
@@ -66,7 +68,7 @@ class CreateMorphMap extends Command
     {
         $directory = storage_path('app/artisan-up/morph-up'); //TOOD: Make cofigurable
         $fileName = 'morph-cache.php';
-        $filePath = $directory . DIRECTORY_SEPARATOR . $fileName;
+        $filePath = $directory.DIRECTORY_SEPARATOR.$fileName;
 
         if (!is_dir($directory)) {
             mkdir($directory);
@@ -74,7 +76,7 @@ class CreateMorphMap extends Command
 
         file_put_contents(
             $filePath,
-            '<?php return ' . var_export($morphMap, true) . ';'
+            '<?php return '.var_export($morphMap, true).';'
         );
     }
 }
