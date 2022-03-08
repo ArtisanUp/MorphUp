@@ -7,8 +7,7 @@ use ArtisanUp\MorphUp\Filter\ClassFilter;
 use ArtisanUp\MorphUp\Find\ClassFinder;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
 
-
-class CreateMorphMapTest extends AbstractPackageTestCase 
+class CreateMorphMapTest extends AbstractPackageTestCase
 {
     public function testItInstantiates()
     {
@@ -19,5 +18,4 @@ class CreateMorphMapTest extends AbstractPackageTestCase
 
         $this->assertInstanceOf(CreateMorphMap::class, $createMorphMapCommand);
     }
-
 }

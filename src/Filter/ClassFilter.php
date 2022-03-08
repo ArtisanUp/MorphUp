@@ -4,10 +4,9 @@ namespace ArtisanUp\MorphUp\Filter;
 
 use ArtisanUp\MorphUp\Find\FoundClass;
 use ArtisanUp\MorphUp\Find\FoundClassCollection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
-
 
 class ClassFilter
 {
@@ -15,12 +14,13 @@ class ClassFilter
      * @return Collection|FoundClass[]
      */
     public function filterFoundClasses(
-        Collection $foundClasses, 
-        array $excludePathsContaining, 
-        array $excludeNamespacesContaining): FoundClassCollection
+        Collection $foundClasses,
+        array $excludePathsContaining,
+        array $excludeNamespacesContaining
+    ): FoundClassCollection
     {
         return $foundClasses->filter(
-            fn(FoundClass $foundClass) => $this->shouldMorphStringClass($foundClass, $excludePathsContaining, $excludeNamespacesContaining)
+            fn (FoundClass $foundClass) => $this->shouldMorphStringClass($foundClass, $excludePathsContaining, $excludeNamespacesContaining)
         );
     }
 
@@ -48,7 +48,7 @@ class ClassFilter
             return false;
         }
 
-        if(!$reflection->isSubclassOf(Model::class)){
+        if (!$reflection->isSubclassOf(Model::class)) {
             return false;
         }
 
