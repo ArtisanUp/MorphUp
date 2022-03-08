@@ -19,5 +19,4 @@ class MorphMapFileWriter
             '<?php return '.var_export($morphMap->toArray(), true).';'
         );
     }
-
 }

@@ -42,8 +42,8 @@ class MorphMapping implements Arrayable
     public function toArray()
     {
         return [
-            'morph_string' => $this->getMorphString(),
-            'morphed_class' => $this->getMorphedClassName()
+            'morph_string'  => $this->getMorphString(),
+            'morphed_class' => $this->getMorphedClassName(),
         ];
     }
 }
