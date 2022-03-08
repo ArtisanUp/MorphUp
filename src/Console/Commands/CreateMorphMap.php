@@ -4,7 +4,6 @@ namespace ArtisanUp\MorphUp\Console\Commands;
 
 use ArtisanUp\MorphUp\Filter\ClassFilter;
 use ArtisanUp\MorphUp\Find\ClassFinder;
-use ArtisanUp\MorphUp\Find\FoundClass;
 use ArtisanUp\MorphUp\Generate\MorphMap\MorphMapFileWriter;
 use ArtisanUp\MorphUp\Generate\MorphMap\MorphMapGenerator;
 use Illuminate\Console\Command;
@@ -43,5 +42,4 @@ class CreateMorphMap extends Command
 
         $this->info('Morph map generated.');
     }
-    
 }
