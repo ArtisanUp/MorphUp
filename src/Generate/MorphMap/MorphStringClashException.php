@@ -4,11 +4,11 @@ namespace ArtisanUp\MorphUp\Generate\MorphMap;
 
 use RuntimeException;
 
-class MorphStringClashException extends RuntimeException 
+class MorphStringClashException extends RuntimeException
 {
     private ?MorphMapping $clashingMapping = null;
 
-    private ?MorphMapping $clashedWithMapping= null;
+    private ?MorphMapping $clashedWithMapping = null;
 
     public function setClashingMapping(MorphMapping $morphMapping): void
     {
@@ -29,6 +29,4 @@ class MorphStringClashException extends RuntimeException
     {
         return $this->clashedWithMapping;
     }
-
-
 }

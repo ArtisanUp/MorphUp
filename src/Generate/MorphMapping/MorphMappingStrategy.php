@@ -12,15 +12,14 @@ enum MorphMappingStrategy : string
 
     /**
      * Is the strategy safe to use in the case of a model name clash.
-     * E.g. two models in different namespaces Staff/User and Customer/User
+     * E.g. two models in different namespaces Staff/User and Customer/User.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isClashSafe(): bool 
+    public function isClashSafe(): bool
     {
-        return match($this) 
-        {
-            self::CLASS_NAME_SNAKE => false,   
+        return match ($this) {
+            self::CLASS_NAME_SNAKE     => false,
             self::FULL_NAMESPACE_SNAKE => true
         };
     }

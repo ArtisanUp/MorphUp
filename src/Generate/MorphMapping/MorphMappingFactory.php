@@ -13,7 +13,7 @@ class MorphMappingFactory
     public function make(FoundClass $foundClass, bool $safeMode = false): MorphMapping
     {
         $morphName = $this->makeMorphString($foundClass, $safeMode);
-    
+
         return new MorphMapping($foundClass, $morphName);
     }
 
@@ -22,7 +22,7 @@ class MorphMappingFactory
         //TODO: Honour configurability of morph string type
         $reflection = $foundClass->getReflectionClass();
 
-        if($safeMode){
+        if ($safeMode) {
             return $this->namespaceToSnakeCase($reflection->getShortName());
         }
 
@@ -36,5 +36,4 @@ class MorphMappingFactory
 
         return str_replace('\\', '', $snakeCase);
     }
-
 }

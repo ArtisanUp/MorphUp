@@ -20,14 +20,10 @@ class MorphMap
 
     public function addMorphMapping(MorphMapping $morphMapping): void
     {
-
         $key = $morphMapping->getMorphString();
 
-        if($this->morphMappings->has($key)){
-
-            
+        if ($this->morphMappings->has($key)) {
         }
         $this->morphMappings->put($morphMapping->getMorphString(), $morphMapping);
     }
-    
 }

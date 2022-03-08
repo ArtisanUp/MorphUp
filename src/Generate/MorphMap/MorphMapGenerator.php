@@ -17,16 +17,17 @@ class MorphMapGenerator
         $morphMap = new MorphMap();
 
         $foundClassCollection->each(
-            function(FoundClass $foundClass) use (&$morphMap){
-            try{
-                $morphMapping = $this->morphMappingFactory->make($foundClass);
-                $morphMap->addMorphMapping($morphMapping);
-            } catch (MorphStringClashException $exception) {
-                $morphMapping = $this->morphMappingFactory->make($foundClass, true);
-                $morphMapping->addException($exception);
-                $morphMap->addMorphMapping($morphMapping);
+            function (FoundClass $foundClass) use (&$morphMap) {
+                try {
+                    $morphMapping = $this->morphMappingFactory->make($foundClass);
+                    $morphMap->addMorphMapping($morphMapping);
+                } catch (MorphStringClashException $exception) {
+                    $morphMapping = $this->morphMappingFactory->make($foundClass, true);
+                    $morphMapping->addException($exception);
+                    $morphMap->addMorphMapping($morphMapping);
+                }
             }
-        });
+        );
 
         return $morphMap;
     }
